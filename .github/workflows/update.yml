@@ -1,0 +1,39 @@
+name: Update Hijri month starts
+
+on:
+  schedule:
+    # Evenings, 17:00-00:59 Beirut: when the offices announce whether the crescent was sighted.
+    - cron: '*/30 14-21 * * *'
+    # Mornings, 09:15 and 13:15 Beirut: date headers (sistani.org, almanar.com.lb) and Fadlallah's calendar.
+    - cron: '15 6,10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hijri-feed
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Arabic OCR (the Lebanon office posts its decision as an image)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-ara
+      - name: Read the announcements
+        run: node update.mjs
+      # Runs even when update.mjs flagged a conflict (exit 1), so the dates it could settle still ship.
+      - name: Publish
+        if: always()
+        run: |
+          if ! git diff --quiet month-starts.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -am 'Update month starts'
+            git push
+          fi
