@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-20T12:00:00Z",
+  "updatedAt": "2026-10-26T11:45:22Z",
   "monthStarts": {
     "khamenei": {
       "1447-07": "2025-12-22",
@@ -16,6 +16,7 @@
       "1448-05": "2026-10-13"
     },
     "sistani": {
+      "1446-10": "2025-03-31",
       "1447-02": "2025-07-27",
       "1447-04": "2025-09-24",
       "1447-08": "2026-01-21",
@@ -85,10 +86,11 @@
       "1448-05": "t.me/leader_lb_channel/2322"
     },
     "sistani": {
+      "1446-10": "t.me/imamhussain_ar/30917",
       "1447-02": "t.me/imamhussain_ar (2025-07-25)",
       "1447-04": "t.me/imamhussain_ar (2025-09-22)",
       "1447-08": "almerja.com/more.php?idm=290043",
-      "1447-09": "alsumaria.tv/news/localnews/556467",
+      "1447-09": "t.me/imamhussain_ar/34676",
       "1447-10": "almerja.com/more.php?idm=295737",
       "1447-11": "ina.iq/ar/local/261130-.html",
       "1447-12": "kalimaiq.net/news/details/61749",
